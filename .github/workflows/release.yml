@@ -49,7 +49,7 @@ jobs:
         MAVEN_ARGS: "-Dgpg.passphrase="
 
         GIT_RELEASE_BOT_NAME: "release-bot"
-        GIT_RELEASE_BOT_EMAIL: "mwiede@gmx.de"
+        GIT_RELEASE_BOT_EMAIL: "luigidemasi@gmail.com"
 
         GITHUB_ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: ./.github/workflows/release.sh
