@@ -1,4 +1,8 @@
-# Fork of JSch-0.1.55
+## Fork of  mwiede/jsch
+
+> > **Note:** This is a fork of [mwiede/jsch](https://github.com/mwiede/jsch) with added support for OpenSSH user and host certificates. It is a drop-in replacement requiring no modifications to existing code.
+
+### Fork of JSch-0.1.55
 
 See original [README](README)
 

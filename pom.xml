@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.github.mwiede</groupId>
+    <groupId>io.github.luigidemasi</groupId>
     <artifactId>jsch</artifactId>
     <packaging>jar</packaging>
     <version>2.27.7-SNAPSHOT</version>
     <name>JSch</name>
-    <url>https://github.com/mwiede/jsch</url>
+    <url>https://github.com/luigidemasi/jsch</url>
     <description>JSch is a pure Java implementation of SSH2</description>
     <scm>
-        <connection>scm:git:https://github.com/mwiede/jsch.git</connection>
-        <developerConnection>scm:git:https://github.com/mwiede/jsch.git</developerConnection>
-        <url>https://github.com/mwiede/jsch</url>
+        <connection>scm:git:https://github.com/luigidemasi/jsch.git</connection>
+        <developerConnection>scm:git:https://github.com/luigidemasi/jsch.git</developerConnection>
+        <url>https://github.com/luigidemasi/jsch</url>
         <tag>HEAD</tag>
     </scm>
     <issueManagement>
         <system>GitHub</system>
-        <url>https://github.com/mwiede/jsch/issues</url>
+        <url>https://github.com/luigidemasi/jsch/issues</url>
     </issueManagement>
     <ciManagement>
         <system>GitHub</system>
-        <url>https://github.com/mwiede/jsch/actions</url>
+        <url>https://github.com/luigidemasi/jsch/actions</url>
     </ciManagement>
     <developers>
         <developer>
@@ -49,19 +49,25 @@
             <organization>Community</organization>
             <organizationUrl>https://github.com/norrisjeremy</organizationUrl>
         </developer>
+        <developer>
+            <id>luigidemasi</id>
+            <name>Luigi De Masi</name>
+            <organization>Community</organization>
+            <organizationUrl>https://github.com/luigidemasi</organizationUrl>
+        </developer>
     </developers>
     <licenses>
         <license>
             <name>Revised BSD</name>
-            <url>https://github.com/mwiede/jsch/blob/master/LICENSE.txt</url>
+            <url>https://github.com/luigidemasi/jsch/blob/master/LICENSE.txt</url>
         </license>
         <license>
             <name>Revised BSD</name>
-            <url>https://github.com/mwiede/jsch/blob/master/LICENSE.JZlib.txt</url>
+            <url>https://github.com/luigidemasi/jsch/blob/master/LICENSE.JZlib.txt</url>
         </license>
         <license>
             <name>ISC</name>
-            <url>https://github.com/mwiede/jsch/blob/master/LICENSE.jBCrypt.txt</url>
+            <url>https://github.com/luigidemasi/jsch/blob/master/LICENSE.jBCrypt.txt</url>
         </license>
     </licenses>
     <properties>
@@ -127,8 +133,14 @@
         </dependency>
         <dependency>
             <groupId>org.testcontainers</groupId>
+            <artifactId>testcontainers</artifactId>
+            <version>2.0.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testcontainers</groupId>
             <artifactId>junit-jupiter</artifactId>
-            <version>1.21.3</version>
+            <version>1.21.4</version>
             <scope>test</scope>
             <!-- Rely upon jna-jpms brought in above -->
             <exclusions>
@@ -139,6 +151,10 @@
                 <exclusion>
                     <groupId>org.slf4j</groupId>
                     <artifactId>slf4j-api</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.testcontainers</groupId>
+                    <artifactId>testcontainers</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
