@@ -30,6 +30,10 @@ git config --global user.name "$GIT_RELEASE_BOT_NAME";
 echo "Setup git user email to '$GIT_RELEASE_BOT_EMAIL'"
 git config --global user.email "$GIT_RELEASE_BOT_EMAIL";
 
+# Setup git credentials for push
+echo "Configuring git credentials"
+git remote set-url origin "https://x-access-token:${GITHUB_ACCESS_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+
 # Setup GPG
 echo "GPG_ENABLED '$GPG_ENABLED'"
 if [[ $GPG_ENABLED == "true" ]]; then

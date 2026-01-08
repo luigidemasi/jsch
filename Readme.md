@@ -1,4 +1,8 @@
-# Fork of JSch-0.1.55
+## Fork of  mwiede/jsch
+
+> > **Note:** This is a fork of [mwiede/jsch](https://github.com/mwiede/jsch) with added support for OpenSSH user and host certificates. It is a drop-in replacement requiring no modifications to existing code.
+
+### Fork of JSch-0.1.55
 
 See original [README](README)
 
@@ -37,12 +41,22 @@ replace
     <version>0.1.55</version>
 </dependency>
 ```
-with
+or
 ```xml
 <dependency>
   <groupId>com.github.mwiede</groupId>
   <artifactId>jsch</artifactId>
-  <version>2.27.5</version>
+  <version>2.27.7</version>
+</dependency>
+```
+
+
+with
+```xml
+<dependency>
+  <groupId>com.github.luigidemasi</groupId>
+  <artifactId>jsch</artifactId>
+  <version>2.27.7</version>
 </dependency>
 ```
 
@@ -50,9 +64,9 @@ with
 When you have an artifact `foo:bar`, which contains `com.jcraft:jsch` as a transitive dependency, you need to add `com.github.mwiede:jsch` as another dependency and exclude the jcraft one:
 ```xml
 <dependency>
-  <groupId>com.github.mwiede</groupId>
+  <groupId>com.github.luigidemasi</groupId>
   <artifactId>jsch</artifactId>
-  <version>2.27.5</version>
+  <version>2.27.7</version>
 </dependency>
 <dependency>
   <groupId>foo</groupId>
@@ -60,6 +74,10 @@ When you have an artifact `foo:bar`, which contains `com.jcraft:jsch` as a trans
   <exclusions>
         <exclusion>  
           <groupId>com.jcraft</groupId>
+          <artifactId>jsch</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>com.github.mwiede</groupId>
           <artifactId>jsch</artifactId>
         </exclusion>
       </exclusions> 
@@ -131,6 +149,13 @@ When you have an artifact `foo:bar`, which contains `com.jcraft:jsch` as a trans
       * analogous to `JSch.setConfig("FingerprintHash", "...")`
     * `jsch.max_auth_tries`
       * analogous to `JSch.setConfig("MaxAuthTries", "...")`
+
+## Other Projects Using JSch
+
+* Jsync https://github.com/fizzed/jsync - Provides a simple, efficient, reliable, and pure Java rsync-like file and
+  directory synchronization tool that can be used programmatically.
+* Blaze https://github.com/fizzed/blaze - A way to run Java files as scripts, with powerful SSH, SFTP, and rsync-like
+  features built right in.
 
 ## Changes since fork:
 See [ChangeLog.md](ChangeLog.md)

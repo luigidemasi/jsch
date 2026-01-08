@@ -11,14 +11,29 @@ jobs:
     if: github.ref == 'refs/heads/release'
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - name: Debug token
+      run: |
+        if [ -z "${{ secrets.ACCESS_TOKEN }}" ]; then
+          echo "ACCESS_TOKEN is empty!"
+        else
+          echo "ACCESS_TOKEN is set (length: ${#token})"
+        fi
+      env:
+        token: ${{ secrets.ACCESS_TOKEN }}
+
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+    - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+      with:
+        token: ${{ secrets.ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
+        persist-credentials: false
 
     - name: Set up JDK
-      uses: actions/setup-java@dded0888837ed1f317902acf8a20df0ad188d165 # v5.0.0
+      uses: actions/setup-java@f2beeb24e141e01a676f977032f5a29d81c9e27e # v5.1.0
       with:
         java-version: '25'
         distribution: 'temurin'
@@ -49,7 +64,7 @@ jobs:
         MAVEN_ARGS: "-Dgpg.passphrase="
 
         GIT_RELEASE_BOT_NAME: "release-bot"
-        GIT_RELEASE_BOT_EMAIL: "mwiede@gmx.de"
+        GIT_RELEASE_BOT_EMAIL: "luigidemasi@gmail.com"
 
-        GITHUB_ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        GITHUB_ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN || secrets.GITHUB_TOKEN }}
       run: ./.github/workflows/release.sh
